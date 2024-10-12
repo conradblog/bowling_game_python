@@ -22,6 +22,17 @@ class TestBowlingGame(unittest.TestCase):
     def test_bowling_game_empty(self):
         game = BowlingGame()
         self.assertEqual(game.score, 0)
+    
+    def test_bowling_game_strike_should_score_10(self):
+        game = BowlingGame()
+        game.add(Pin(10))
+        self.assertEqual(game.score, 10)
+    
+    def test_bowling_game_strike_in_a_row_should_add_bonus(self):
+        game = BowlingGame()
+        game.add(Pin(10))
+        game.add(Pin(10))
+        self.assertEqual(game.score, 30)
 
 if __name__ == '__main__':
     unittest.main()
